@@ -1,5 +1,7 @@
-// Grap the button element
+// Grap the save button element
 const saveLead = document.getElementById('save-btn');
+// Grap the delete button element
+const deleteLead = document.getElementById('delete-btn');
 // Grap The input element
 const inputEL = document.getElementById('input-el');
 // Grap the unordered list element
@@ -14,6 +16,16 @@ if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage;
     renderLeads();
 }
+
+// Create double click event 
+deleteLead.addEventListener('dblclick', function () {
+    // Clear localStorage
+    localStorage.clear();
+    // Clear URLs array
+    myLeads = [];
+    // Clear DOM list
+    renderLeads();
+});
 
 // Add click listen to save button
 saveLead.addEventListener('click', function () {
