@@ -14,7 +14,7 @@ const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") );
 // Check and render our url list
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage;
-    renderLeads();
+    render(myLeads);
 }
 
 // Create double click event 
@@ -24,7 +24,7 @@ deleteLead.addEventListener('dblclick', function () {
     // Clear URLs array
     myLeads = [];
     // Clear DOM list
-    renderLeads();
+    render(myLeads);
 });
 
 // Add click listen to save button
@@ -34,18 +34,18 @@ saveLead.addEventListener('click', function () {
     inputEL.value = '';
     // Svae urls to localStorage 
     localStorage.setItem("myLeads", JSON.stringify(myLeads));
-    renderLeads();
+    render(myLeads);
 });
 
-// Create renderLead function to list our URLs
-function renderLeads() {
+// Create render function to list our URLs
+function render(_leads) {
     let listItems = "";
-    for (let i = 0; i < myLeads.length; i++) {
+    for (let i = 0; i < _leads.length; i++) {
         // Using Template string to make code more clean
         listItems += 
             `<li>
-                <a href="${myLeads[i]}" target="_blank">
-                    ${myLeads[i]}
+                <a href="${_leads[i]}" target="_blank">
+                    ${_leads[i]}
                 </a>
             </li>`;
     }
