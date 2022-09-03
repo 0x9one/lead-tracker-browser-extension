@@ -7,7 +7,7 @@ const urlList = document.getElementById('url-list');
 // Create array to stock urls
 let myLeads = []; 
 // Get items from localStorage 
-let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") );
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") );
 
 // Check and render our url list
 if (leadsFromLocalStorage) {
