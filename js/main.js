@@ -6,11 +6,22 @@ const inputEL = document.getElementById('input-el');
 const urlList = document.getElementById('url-list'); 
 // Create array to stock urls
 let myLeads = []; 
+// Get items from localStorage 
+let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") );
+
+// Check and render our url list
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage;
+    renderLeads();
+}
+
 // Add click listen to save button
 saveLead.addEventListener('click', function () {
     // When save clicks push value to the myLeads array
     myLeads.push(inputEL.value);
     inputEL.value = '';
+    // Svae urls to localStorage 
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
     renderLeads();
 });
 
